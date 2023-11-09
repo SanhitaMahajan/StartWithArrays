@@ -1,0 +1,82 @@
+Inserting a new element into an Array can take many forms:
+
+1. Inserting a new element at the end of the Array.
+2. Inserting a new element at the beginning of the Array.
+3. Inserting a new element at any given index inside the Array.
+
+
+*Inserting at the End of an Array*
+At any point in time, we know the index of the last element of the Array, 
+as we've kept track of it in our length variable. 
+All we need to do for inserting an element at the end is to assign the new element to one index past the current last element.
+
+Example - 
+Input - arr=[1,2,3,4,5]
+        Key - 8
+Output - arr=[1,2,3,4,5,8]
+
+Explanation - key value 8 is inserted at end of array 
+
+# Lets understand Time & Space Complexity for above example 
+Time Complexity: O(n)
+Auxiliary Space: O(1)
+
+Let’s break down the time and space complexity of the provided code step by step:
+
+1.Array Initialization:
+– The array `arr` is initialized with 20 elements.
+– This takes O(1) time and O(20) space, which simplifies to O(1) space.
+
+2.Array Size Calculation:
+– The size of the array (`capacity`) is calculated using `sizeof(arr) / sizeof(arr[0])`.
+– This takes O(1) time.
+
+3.Loop to Print the Array:
+– There is a loop to print the elements of the array, which has a constant number of iterations (6 in this case).
+– This takes O(n) time, where n is the number of elements in the array.
+
+4.Insertion Function (`insertSorted`):
+– The insertion function itself is very simple and consists of constant time operations:
+– Checking if the array is full (`n >= capacity`) takes O(1) time.
+– Assigning the key to the array at the end and updating `n` takes O(1) time.
+
+5.Loop to Print the Array After Insertion:
+– Similar to the loop before insertion, this loop has a constant number of iterations (n + 1 in this case).
+– This takes O(n) time.
+Therefore, the overall time complexity of the code is dominated by the loop iterations for printing the array,
+and the insertion and checking operations are constant time. Hence, the time complexity is O(n).
+In terms of space complexity, the code uses a constant amount of extra space for variables (`i`, `key`, `capacity`) 
+and the array itself. Thus, the space complexity is O(1).
+
+To summarize:
+– Time Complexity: O(n)
+– Space Complexity: O(1)
+
+
+
+* Inserting at the Start of an Array * 
+
+To insert an element at the start of an Array, we'll need to shift all other elements in the Array to the right by one index 
+to create space for the new element. This is a very costly operation, since each of the existing elements has to be 
+shifted one step to the right. The need to shift everything implies that this is not a constant time operation. 
+In fact, the time taken for insertion at the beginning of an Array will be proportional to the length of the Array. 
+In terms of time complexity analysis, this is a linear time complexity: 
+O(N), where N is the length of the Array.
+
+
+* Inserting Anywhere in the Array *
+
+To insert an element at any given index, we first need to shift all the elements from that index onwards 
+one position to the right. Once the space is created for the new element, we proceed with the insertion. 
+If you think about it, insertion at the beginning is basically a special case of inserting an element at 
+a given index—in that case, the given index was 0.
+
+Again, this is also a costly operation since we could potentially have to shift almost all the other elements 
+to the right before actually inserting the new element. As you saw above, shifting lots of elements one place 
+to the right adds to the time complexity of the insertion task.
+
+* Tip *
+
+The main thing to be careful of is remembering that array.length() gives you the total capacity of the Array. 
+If you want to know the last used slot, you'll need to keep track of this yourself using a length variable. 
+Other than that, just be careful to read any elements you want to keep, before you overwrite them!
